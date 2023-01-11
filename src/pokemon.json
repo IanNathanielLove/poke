@@ -1,0 +1,85 @@
+[
+    {
+        "name": "Charmander", 
+        "elementType": "Fire",
+        "id": 1,
+        "weightLb": 20,
+        "moveSet": [
+            " Tackle",
+            " Burn",
+            " Slap"
+        ]
+    },
+    {
+        "name": "Bulbosaur", 
+        "elementType": "Grass",
+        "id": 2,
+        "weightLb": 10,
+        "moveSet": [
+            " Tackle",
+            " Leaf Wip",
+            " Slap"
+        ]
+
+    },
+    {
+        "name": "Pikachu", 
+        "elementType": "Electric",
+        "id": 3,
+        "weightLb": 15,
+        "moveSet": [
+            " Tackle",
+            " ThunderBolt",
+            " Slap"
+        ]
+
+    },
+    {
+        "name": "Digglet", 
+        "elementType": "Earth",
+        "id": 4,
+        "weightLb": 18,
+        "moveSet": [
+            " Tackle",
+            " Earthquake",
+            " Slap"
+        ]
+
+    },
+    {
+        "name": "Squirdle", 
+        "elementType": "Water",
+        "id": 5,
+        "weightLb": 12,
+        "moveSet": [
+            " Tackle",
+            " Water Blast",
+            " Slap"
+        ]
+
+    },
+    {
+        "name": "Mew", 
+        "elementType": "Psychic",
+        "id": 6,
+        "weightLb": 22,
+        "moveSet": [
+            " Tackle",
+            " Psychic Wave",
+            " Slap"
+        ]
+
+    },
+    {
+        "name": "Zoobat", 
+        "elementType": "Shadow",
+        "id": 7,
+        "weightLb": 8,
+        "moveSet": [
+            " Tackle",
+            " Fly",
+            " Slap"
+        ]
+
+    }
+]
