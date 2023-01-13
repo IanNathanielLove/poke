@@ -1,4 +1,10 @@
 <button class="pulse" routerLink=""> Back</button>
-<div *ngIf="pokemons">
-    <h1>{{pokemons.name}}</h1>
+<div *ngIf="pokedeets">
+    <h1>{{pokedeets.name}}</h1>
+    <li>
+        <ul><p>height: {{pokedeets.height}}</p></ul>
+        <ul><p>weight: {{pokedeets.weight}}</p></ul>
+        <ul><p>base exp: {{pokedeets.base_experience}}</p></ul>
+    </li>
+    <img src="{{pokedeets.front_default}}"/>
 </div>

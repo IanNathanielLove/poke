@@ -3,6 +3,7 @@ import { PokeService } from '../services/poke.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Pokemon } from '../pokemon';
+import { pokeDeets } from '../models/pokemodel';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -17,7 +18,7 @@ export class PokemonDetailsComponent implements OnInit{
               private route: ActivatedRoute){
   }
 
-  pokemons : Pokemon | undefined;
+  pokedeets: pokeDeets | undefined;
 
  
   ngOnInit(): void {
@@ -25,11 +26,21 @@ export class PokemonDetailsComponent implements OnInit{
 
   }
 
-  getPokemonDetails(): void{
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.pokeService.getById(id)
-    .subscribe(pokemon => this.pokemons = pokemon);
+  //getPokemonDetails(): void{
+    //const id = Number(this.route.snapshot.paramMap.get('id'));
+    //this.pokeService.getById(id)
+    //.subscribe(pokemon => this.pokemons = pokemon);
+  //}
+
+  getPokemonDetails(): void {
+    let name = this.route.snapshot.paramMap.get('name') ?? "";
+    this.pokeService.getDetails(name).subscribe(pokedeets => this.pokedeets = pokedeets)
   }
+
+  //backClicked(){
+    //let backClick = this.route.snapshot.queryParamMap.get()
+   
+  //}
 
 
 }

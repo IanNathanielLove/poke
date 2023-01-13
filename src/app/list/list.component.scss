@@ -1,0 +1,134 @@
+.poke-list{
+    display: inline-block;
+    width: 33%;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.poke-card{
+    
+   
+    background: #ffcc00;
+    border-radius: 10px;
+    border: solid 10px blue;
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 260px;
+   
+}
+
+
+.poke_container{
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    max-width: 1000px;
+}
+
+.header_image{
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
+    width:100%;
+
+}
+
+.image-container{
+    position: relative;
+    width: 93%;
+    height: 215px;
+    background-size: contain;
+    margin: auto;
+    left: 0;
+    top: 15px;
+    right: 0;
+    border-radius: 3px;
+    background: url('https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/0032398f86ea753194c5eeba97eccda2-1627249600/ExportBackgroundnomoveclound/draw-a-pixel-pokemon-battle-background.gif');
+    
+}
+
+.main_button{
+    margin: 1rem;
+    
+}
+
+.poke-image{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 10%);
+    width: 87%;
+}
+
+#image-front{
+    opacity: 0;
+    animation: front 2s infinite;
+}
+
+
+#image-back{
+    opacity: 0;
+    animation: back 2s infinite;
+
+}
+
+@keyframes front {
+
+     0%, 50%{
+        opacity: 1;
+    }
+
+    51%, 100%{
+        opacity: 0;
+    }
+
+}
+
+@keyframes back {
+
+    0%, 50%{
+        opacity: 0;
+    }
+
+    51%, 100%{
+        opacity: 1;
+    }
+
+}
+
+
+
+.detail_box{
+    height:100px;
+}
+
+
+
+@media(max-width:820px){
+
+    .poke-list{
+        width: 50%;
+        
+    }
+
+    .poke-card{
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 236px;
+    }
+
+}
+
+
+@media(max-width:550px){
+
+    .poke-list{
+        width: 100%;
+    }
+    .poke-card{
+        margin-left: auto;
+        margin-right: auto;
+        max-width:255px;
+    }
+
+}
+

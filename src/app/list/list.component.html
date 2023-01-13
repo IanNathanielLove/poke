@@ -1,6 +1,20 @@
-<h1>Poke-dex</h1>
-<button class="poke-list" *ngFor="let pokemon of pokemons" routerLink="/detail/{{pokemon.id}}">Name: {{pokemon.name}}
-</button>
+
+<img class="header_image" src="https://pngimg.com/uploads/pokemon_logo/pokemon_logo_PNG3.png">
+<app-pagination [currentPage]="pokemonPage?.currentPage || 1" (prevClicked)="loadPrev()" (nextClicked)="loadNext()"></app-pagination>
+<div class="poke_container">
+<div class="poke-list" *ngFor="let pokelist of pokemonPage?.pokelist" routerLink="/detail/{{pokelist.name}}">
+    <div class="poke-card">
+        <div class="image-container">
+            <img class="poke-image" id="image-front" *ngIf="pokelist.images" src="{{pokelist.images.front_default}}" alt="">
+            <img class="poke-image" id="image-back" *ngIf="pokelist.images" src="{{pokelist.images.back_default}}" alt="">
+        </div> 
+        <div class="detail_box"></div>
+        <button class="main_button">Name: {{pokelist.name}} </button>
+
+    </div>
+</div>
+<app-pagination [currentPage]="pokemonPage?.currentPage || 1" (prevClicked)="loadPrev()" (nextClicked)="loadNext()"></app-pagination>
+</div>
 
 
  
