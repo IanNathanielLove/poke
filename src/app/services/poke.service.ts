@@ -1,6 +1,6 @@
 import { Injectable, LOCALE_ID } from '@angular/core';
 import {concatMap, map, Observable, of, zip, tap } from 'rxjs'
-import {  pokeimages, pokemodel, pokemodelPage, pokemoves, basicDetails, pokeTypes } from '../models/pokemodel';
+import {  pokeimages, pokemodel, pokemodelPage, pokemoves, basicDetails, pokeTypes, pokeDeets } from '../models/pokemodel';
 import { HttpClient } from '@angular/common/http'
 
 
@@ -21,12 +21,11 @@ export class PokeService {
 
 // method for getting pokemon to list view
   getPokemon(page: number = 1 , limit: number = 20):Observable<pokemodelPage>{
-    let offset = (page - 1) * limit;
+    let offset = (page - 1) * limit; 
     return this.http.get(`${this.pokeUrl}/pokemon`, {params: {offset, limit}}).pipe(
       concatMap((data:any) => {
         return this.getManyImages(data.results).pipe(map(pokemonlist => {
           data.results = pokemonlist
-          console.log('images');
           return data
         }
         )) 
@@ -43,8 +42,8 @@ export class PokeService {
 
 
 //gets data from api for the detail view 
-  getDetails(name: string): Observable<basicDetails>{
-    return this.http.get<basicDetails>(`${this.pokeUrl}/pokemon/${name}`).pipe(
+  getDetails(name: string): Observable<pokeDeets>{
+    return this.http.get<pokeDeets>(`${this.pokeUrl}/pokemon/${name}`).pipe(
      concatMap((data:any) => {
         return this.getMovesList(data.moves).pipe(map(pokemonMovesList => {
           data.moves = pokemonMovesList
@@ -54,7 +53,7 @@ export class PokeService {
         }))
       }),
       map((data: any) => {    
-        return new basicDetails(data.name, data.id,  data.height, data.weight, data.moves, data.types, data.images);
+        return new pokeDeets(data.name, data.id, data.base_experience, data.height, data.weight, data.sprites, data.moves);
     }),
     )
   }
@@ -87,9 +86,9 @@ export class PokeService {
 
 
 
-  getBasicDetails(name: string): Observable<basicDetails>{  
-      return this.http.get<basicDetails>(`${this.pokeUrl}/pokemon/${name}`).pipe(map((data: any)=> {
-        let basic = new basicDetails(data.name, data.id, data.height, data.weight, data.moves, data.types, data.images );
+  getBasicDetails(name: string): Observable<pokeDeets>{  
+      return this.http.get<pokeDeets>(`${this.pokeUrl}/pokemon/${name}`).pipe(map((data: any)=> {
+        let basic = new pokeDeets(data.name, data.id, data.base_experience, data.height, data.weight, data.images, data.moves);
         return basic;
       }))
   }
@@ -138,7 +137,7 @@ export class PokeService {
     console.log("getManyImages", pokelist)
     return zip(...pokelist.map(p => {
       return this.getImages(p.name).pipe(map(pokeUrl => {
-        p.name = pokeUrl
+        p.images = pokeUrl
         return p
       }))
     }))
@@ -148,5 +147,3 @@ export class PokeService {
 
   
 }
-
-
