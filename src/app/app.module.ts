@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { SingleCardComponent } from './single-card/single-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
     PokemonDetailsComponent,
-    PaginationComponent
+    PaginationComponent,
+    SingleCardComponent
   ],
   imports: [
     BrowserModule,

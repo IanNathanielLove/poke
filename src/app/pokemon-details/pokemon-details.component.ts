@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Pokemon } from '../pokemon';
 import { basicDetails, pokeimages } from '../models/pokemodel';
-///import { pokeDeets } from '../models/pokemodel';
+import { pokeDeets } from '../models/pokemodel';
 import { Subject, Subscription } from 'rxjs';
 
 @Component({
@@ -20,8 +20,8 @@ export class PokemonDetailsComponent implements OnInit{
               private route: ActivatedRoute){
   }
   pokemonDeatailsSub!: Subscription;
-  //pokedeets: pokeDeets | undefined;
-  pokeBasicDetails: basicDetails | undefined;
+  pokedeets: pokeDeets | undefined;
+  //pokeBasicDetails: basicDetails | undefined;
   pokemonImages: pokeimages | undefined;
   unsubscribe$ = new Subject<void>();
 
@@ -33,10 +33,8 @@ export class PokemonDetailsComponent implements OnInit{
   }
 
   getPokemonDetails(): void {
-
     let name = this.route.snapshot.paramMap.get('name') ?? "";
-    this.pokeService.getDetails(name).subscribe(basicDetails => {this.pokeBasicDetails = basicDetails
-      console.log(basicDetails)})
+    this.pokeService.getDetails(name).subscribe(pokedeets => {this.pokedeets = pokedeets})
 
   }
 

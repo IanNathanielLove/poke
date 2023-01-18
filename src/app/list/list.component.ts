@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable, observable, Subject, Subscription, takeUntil } from 'rxjs';
 import { PokeService } from '../services/poke.service';
 import { Pokemon } from '../pokemon';
-import { pokeimages, pokemodel, pokemodelPage, basicDetails } from '../models/pokemodel';
+import { pokeimages, pokemodel, pokemodelPage } from '../models/pokemodel';
 import { ActivatedRoute, Router } from '@angular/router';
 
 

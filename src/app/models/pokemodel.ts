@@ -74,32 +74,29 @@ export class basicDetails{
     }
 }
 
-/*
+
 export class pokeDeets{
     
     name: string;
     id: number;
     height : number;
     weight : number;
+    base_experience: number;
     moves: pokemoves [];
-    images?: pokeimages [];
-
+    sprites?: pokeimages [];
     
-
-
-    constructor(name: string, id: number, basexp: number, height: number, weight: number, images: pokeimages[], moves: pokemoves[] ){
+    constructor(name: string, id: number, base_experience: number, height: number, weight: number, sprites: pokeimages[], moves: pokemoves[] ){
         
         this.moves = moves;
         this.name = name;
         this.id = id;
-        this.base_experience= basexp;
+        this.base_experience= base_experience;
         this.height = height;
         this.weight = weight;
-        this.images = images;
+        this.sprites = sprites;
     }
-
 }
-*/
+
 
 export class pokemodelPage{
 
