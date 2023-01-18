@@ -1,10 +1,23 @@
-export interface Pokemon{
-    name : string 
-    elementType : string,
-    id : number,
-    weightLb : number,
-    moveSet : string[]
+export class pokemoves{
+    name: string;
+    power: number;
+
+    constructor(name: string, power: number){
+        this.name = name;
+        this.power = power;
+    }
 }
+
+
+export class pokeTypes{
+    name: string;
+    
+    constructor(name: string){
+        this.name = name;
+    }
+}
+
+
 
 export class pokeimages{
 
@@ -18,40 +31,75 @@ export class pokeimages{
 
 }
 
+
 export class pokemodel{
 
     name : string;
     url: string;
     images? : pokeimages
 
-    constructor(name: string, url: string, images?: pokeimages ) {
+    constructor(name: string, url: string, 
+        images?: pokeimages
+         ) {
         this.name = name;
         this.url = url;
         this.images = images;
     }
 }
 
+
+export class basicDetails{
+    
+    name: string;
+    id: number;
+    height : number;
+    weight : number;
+    moves?: pokemoves [];
+    types?: pokeTypes [];
+    images: pokeimages;
+
+ 
+
+    constructor(name: string, id: number,height: number, weight: number, moves: pokemoves[], types: pokeTypes[], images: pokeimages){
+        
+
+        this.name = name;
+        this.id = id;
+        this.height = height;
+        this.weight = weight;
+        this.moves = moves;
+        this.types = types;
+        this.images = images;
+       
+    }
+}
+
+/*
 export class pokeDeets{
     
     name: string;
     id: number;
-    base_experience : number;
     height : number;
     weight : number;
-    front_default : string;
+    moves: pokemoves [];
+    images?: pokeimages [];
+
     
 
 
-    constructor(name: string, id: number, basexp: number, height: number, weight: number, front_default : string){
+    constructor(name: string, id: number, basexp: number, height: number, weight: number, images: pokeimages[], moves: pokemoves[] ){
+        
+        this.moves = moves;
         this.name = name;
         this.id = id;
         this.base_experience= basexp;
         this.height = height;
         this.weight = weight;
-        this.front_default = front_default;
+        this.images = images;
     }
 
 }
+*/
 
 export class pokemodelPage{
 

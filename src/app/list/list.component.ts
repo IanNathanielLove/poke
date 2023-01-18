@@ -24,7 +24,6 @@ export class ListComponent implements OnInit{
 
   pokemonPageSub!: Subscription;
   pokemonPage?: pokemodelPage;
-  basicdetails?: basicDetails;
   unsubscribe$ = new Subject<void>(); 
   pokeImages: pokeimages | undefined;
   pagination!: {nextLink?: string, prevLink?: string, currentPage: number} 

@@ -3,7 +3,9 @@ import { PokeService } from '../services/poke.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Pokemon } from '../pokemon';
-import { pokeDeets } from '../models/pokemodel';
+import { basicDetails, pokeimages } from '../models/pokemodel';
+///import { pokeDeets } from '../models/pokemodel';
+import { Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -17,8 +19,12 @@ export class PokemonDetailsComponent implements OnInit{
               private location: Location, 
               private route: ActivatedRoute){
   }
+  pokemonDeatailsSub!: Subscription;
+  //pokedeets: pokeDeets | undefined;
+  pokeBasicDetails: basicDetails | undefined;
+  pokemonImages: pokeimages | undefined;
+  unsubscribe$ = new Subject<void>();
 
-  pokedeets: pokeDeets | undefined;
 
  
   ngOnInit(): void {
@@ -26,21 +32,23 @@ export class PokemonDetailsComponent implements OnInit{
 
   }
 
-  //getPokemonDetails(): void{
-    //const id = Number(this.route.snapshot.paramMap.get('id'));
-    //this.pokeService.getById(id)
-    //.subscribe(pokemon => this.pokemons = pokemon);
-  //}
-
   getPokemonDetails(): void {
+
     let name = this.route.snapshot.paramMap.get('name') ?? "";
-    this.pokeService.getDetails(name).subscribe(pokedeets => this.pokedeets = pokedeets)
+    this.pokeService.getDetails(name).subscribe(basicDetails => {this.pokeBasicDetails = basicDetails
+      console.log(basicDetails)})
+
   }
 
-  //backClicked(){
-    //let backClick = this.route.snapshot.queryParamMap.get()
-   
-  //}
+  backClicked(): void{
+    this.location.back();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+
+  }
 
 
 }
