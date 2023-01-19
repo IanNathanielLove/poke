@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PokeService } from '../services/poke.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { Pokemon } from '../pokemon';
-import { basicDetails, pokeimages } from '../models/pokemodel';
-import { pokeDeets } from '../models/pokemodel';
+import { pokeimages } from '../models/pokemodel';
+import { Pokemon} from '../models/pokemodel';
 import { Subject, Subscription } from 'rxjs';
 
 @Component({
@@ -20,12 +19,11 @@ export class PokemonDetailsComponent implements OnInit{
               private route: ActivatedRoute){
   }
   pokemonDeatailsSub!: Subscription;
-  pokedeets: pokeDeets | undefined;
-  //pokeBasicDetails: basicDetails | undefined;
+  pokedeets: Pokemon | undefined;
   pokemonImages: pokeimages | undefined;
   unsubscribe$ = new Subject<void>();
 
-
+  @Input() data!: Pokemon;
  
   ngOnInit(): void {
     this.getPokemonDetails();
@@ -35,7 +33,6 @@ export class PokemonDetailsComponent implements OnInit{
   getPokemonDetails(): void {
     let name = this.route.snapshot.paramMap.get('name') ?? "";
     this.pokeService.getDetails(name).subscribe(pokedeets => {this.pokedeets = pokedeets})
-
   }
 
   backClicked(): void{

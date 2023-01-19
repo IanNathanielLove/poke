@@ -7,6 +7,8 @@ import { ListComponent } from './list/list.component';
 import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { SingleCardComponent } from './single-card/single-card.component';
+import { MovesComponent } from './moves/moves.component';
+import { DropdownComponent } from './dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { SingleCardComponent } from './single-card/single-card.component';
     ListComponent,
     PokemonDetailsComponent,
     PaginationComponent,
-    SingleCardComponent
+    SingleCardComponent,
+    MovesComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,

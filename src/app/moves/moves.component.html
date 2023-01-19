@@ -1,0 +1,2 @@
+<p>{{moves[index].name}} | {{moves[index].power}}</p>
+<app-pagination *ngIf="moves" [currentPage]="index" [lastpage]="lastpage" (prevClicked)="loadPrev()" (nextClicked)="loadNext()"></app-pagination>

@@ -1,9 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { Observable, observable, Subject, Subscription, takeUntil } from 'rxjs';
 import { PokeService } from '../services/poke.service';
 import { Pokemon } from '../pokemon';
 import { pokeimages, pokemodel, pokemodelPage } from '../models/pokemodel';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SingleCardComponent } from '../single-card/single-card.component';
+
 
 
 @Component({
@@ -22,10 +24,12 @@ export class ListComponent implements OnInit{
     
 }
 
+
+ 
   pokemonPageSub!: Subscription;
   pokemonPage?: pokemodelPage;
   unsubscribe$ = new Subject<void>(); 
-  pokeImages: pokeimages | undefined;
+  //pokeImages: pokeimages | undefined;
   pagination!: {nextLink?: string, prevLink?: string, currentPage: number} 
 
   ngOnInit(): void {
@@ -33,6 +37,7 @@ export class ListComponent implements OnInit{
     this.pagination = {currentPage: page}
     this.getPokemany(page);
     console.log(page); 
+ 
   }
 
   getPokemany(page?: number, limit?: number){

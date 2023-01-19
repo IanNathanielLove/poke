@@ -1,11 +1,24 @@
 <button class="pulse" (click)="backClicked()"> Back</button>
+
+
+
+<div class="poke_container">
 <div *ngIf="pokedeets">
-    <h1>{{pokedeets.name}}</h1>
+    
+    <img src="{{pokedeets.sprites?.front_default}}" alt=""/>
+    <h1 class="name">{{pokedeets.name}}</h1>
     <li>
         <ul><p>height: {{pokedeets.height}}</p></ul>
         <ul><p>weight: {{pokedeets.weight}}</p></ul>
         <ul><p>base exp: {{pokedeets.base_experience}}</p></ul>
-        <ul><p *ngFor=" let moves of pokedeets?.moves">{{moves.name}} | {{moves.power}}</p></ul>
+        <ul><p>type: {{pokedeets.types}}</p></ul>
+
+        <ul>
+            <app-moves [moves]="pokedeets.moves"></app-moves>
+           
+        </ul>
     </li>
-    <img *ngFor=" let img of pokedeets?.sprites" class="poke-image" id="image-front"  src="{{pokedeets.sprites}}}" alt="">
+    
 </div>
+</div>
+

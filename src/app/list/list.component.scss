@@ -28,6 +28,7 @@
 .header_image{
     max-width: 400px;
     margin: 0 auto;
+    margin-bottom: 5%;
     display: block;
     width:100%;
 
@@ -70,6 +71,14 @@
     animation: back 2s infinite;
 
 }
+
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 
 @keyframes front {
 

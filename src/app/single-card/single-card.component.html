@@ -1,1 +1,9 @@
-<p>single-card works!</p>
+<div class="poke-card">
+    <div class="image-container">
+        <img class="poke-image" id="image-front"  src="{{data.images?.front_default}}" alt="">
+        <img class="poke-image" id="image-back"  src="{{data.images?.back_default}}" alt="">
+        
+            
+    </div> 
+    <button class="main_button" routerLink="/detail/{{data.name}}" > Name: {{data.name}} </button>
+</div>

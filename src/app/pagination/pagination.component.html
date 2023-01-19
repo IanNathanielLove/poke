@@ -1,2 +1,2 @@
-<button *ngIf="currentPage > 1" (click)="prevClicked.emit()"><</button> <span>| {{currentPage}} |</span>
-<button  (click)="nextClicked.emit()">></button>
+<button *ngIf="currentPage > 1" (click)="prevClicked.emit()">prev</button> <span> | {{currentPage}} | </span>
+<button *ngIf="lastpage != true" (click)="nextClicked.emit()">next</button>
