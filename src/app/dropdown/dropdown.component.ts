@@ -57,10 +57,17 @@ export class DropdownComponent {
 
 
     loadMyChildComponent() {
-      
-      return this.nameInput
       this.loadComponent = true;
 
+      console.log("type", this.typeInput)
+
+      if(this.typeInput == ""){
+        this.typeInput  == undefined
+      }
+
+      //this.pokeSerice.getDetails(this.nameInput).subscribe(pokemon => {
+        //this.pokemon = pokemon
+      //})
 
       
     }

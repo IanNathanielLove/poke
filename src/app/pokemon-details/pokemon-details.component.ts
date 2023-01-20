@@ -18,10 +18,14 @@ export class PokemonDetailsComponent implements OnInit{
               private location: Location, 
               private route: ActivatedRoute){
   }
+
+
   pokemonDeatailsSub!: Subscription;
   pokedeets: Pokemon | undefined;
   pokemonImages: pokeimages | undefined;
   unsubscribe$ = new Subject<void>();
+
+  @Input() pokemonName!: string;
 
   @Input() data!: Pokemon;
  
@@ -31,9 +35,12 @@ export class PokemonDetailsComponent implements OnInit{
   }
 
   getPokemonDetails(): void {
-    let name = this.route.snapshot.paramMap.get('name') ?? "";
-    this.pokeService.getDetails(name).subscribe(pokedeets => {this.pokedeets = pokedeets})
+    //let name = this.route.snapshot.paramMap.get('name') ?? "";
+    console.log("getPokemonDetails", this.pokemonName)
+    this.pokeService.getDetails(this.pokemonName).subscribe(pokedeets => {this.pokedeets = pokedeets})
   }
+
+  
 
   backClicked(): void{
     this.location.back();
