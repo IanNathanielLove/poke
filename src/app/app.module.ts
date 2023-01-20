@@ -9,6 +9,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { SingleCardComponent } from './single-card/single-card.component';
 import { MovesComponent } from './moves/moves.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DropdownComponent } from './dropdown/dropdown.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

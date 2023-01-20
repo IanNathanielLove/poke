@@ -35,6 +35,27 @@ export class PokeService {
     }))
   }
 
+  
+  
+
+  getByName(name: string): Observable<Pokemon> {
+    return this.http.get<Pokemon>(`${this.pokeUrl}/pokemon/${name}`).pipe(
+      map((item: any) => {
+        let types = item.types.map((data: any) => {
+          return new PokeType(types.type.name)
+        })
+        return new Pokemon(item.name, item.id, item.base_experience, item.height, item.weight, item.sprites, item.moves, types)
+      }))
+  }
+
+  getManyByName(pokeList: any[]): Observable<any[]> {
+    return zip(...pokeList.map(p => {
+      return this.getByName(p.name).pipe(map(pokeObj => {
+        return pokeObj
+      }))
+    }))
+  }
+
 
 //gets data from api for the detail view 
   getDetails(name: string): Observable<Pokemon>{
@@ -72,13 +93,47 @@ export class PokeService {
 
 
 
+  getTypeList(type:string[]):Observable<string []>{
+    return this.http.get<string []>(`${this.pokeUrl}/type`).pipe(map((data:any)=>{
+
+      let type : string [] = []
+
+      data.results.forEach((p:any) =>{
+        type.push(p.name)     
+      })
+
+      console.log("array", type)
+      return type
+
+    }))
+  }
+
+
+  getNameList(name:string):Observable<string []>{
+    return this.http.get<string []>(`${this.pokeUrl}/type/${name}`).pipe(map((data:any)=>{
+
+
+      let names : string [] = []
+
+      data.pokemon.forEach((p:any) => {
+        names.push(p.pokemon.name)
+
+      })
+
+      console.log("getNameList", names)
+      return names
+
+
+
+    }))
+  }
+
 
   getType(name: string): Observable<pokeTypes>{
     return this.http.get<pokeTypes>(`${this.pokeUrl}/type/${name}`).pipe(map((data:any)=> {
-      let type = new pokeTypes (data.name);
+      let type = new pokeTypes(data.name);
       return type;
     }))
-
   }
 
   getTypes(types: any[]):Observable<any>{
@@ -90,6 +145,7 @@ export class PokeService {
       }))
     }))
   }
+
 
 
 
@@ -122,6 +178,49 @@ export class PokeService {
     }))
 
   }
+
+/*
+  filterByType(type: string) {
+    return this.http.get(`${this.pokeUrl}/type/${type}`).pipe(map((item: any) => {
+      let pokenameList = new po;
+      item.pokemon.forEach((pokemon: any) => {
+        pokenameList.pokemonOfType?.push(pokemon.pokemon.name);
+        //console.log("pokemon name", pokemon.pokemon.name);
+      })
+      console.log("This is my pokelist", pokenameList);
+      return pokenameList;
+    }))
+
+/*
+
+
+  getType(moves: any[]): Observable<Move[]> {
+    let returnArr: Observable<Move>[] = []
+    for (let i = 0; i < moves.length && i < 5; i++) {
+      returnArr.push(
+        this.http.get(`${this.baseURL}/move/${moves[i].move.name}`).pipe(map((m: any) => {
+          return new Move(m.name, m.accuracy, m.power, m.pp, m.flavor_text_entries[0]?.flavor_text)
+        }))
+      )
+    }
+    return zip(returnArr)
+  }
+
+
+  
+
+
+  get(name: string): Observable<Habitat>{
+    return this.http.get<Habitat>(`${this.baseURL}/pokemon-habitat/${name}`).pipe(map((m: any) => {
+      console.log("getEnv", m)
+      let pokeList = new Habitat();
+      m.pokemon_species.forEach((pokemon_species: any)=>{
+        pokeList.pokemon_species?.push(pokemon_species.name)
+      })
+      return pokeList
+  }))
+  }
+  */
 
 
   

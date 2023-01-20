@@ -1,3 +1,18 @@
-<select ng-model="selectedName" ng-options="x for x in names">
+<label>Type</label> 
+<select [(ngModel)]="typeInput" (change)="getNames()">
+  <option *ngFor="let type of types" value= {{type}}>{{type}}</option>
 </select>
 
+<br/><br/>
+
+<div>
+
+<label>Name</label>
+<select [(ngModel)]="nameInput" (change)="loadMyChildComponent()">
+  <option value="0">--Select--</option>
+  <option *ngFor="let name of names " value= {{name}}>{{name}}</option>
+</select>
+
+</div>
+
+<app-pokemon-details *ngIf="loadComponent" ></app-pokemon-details>

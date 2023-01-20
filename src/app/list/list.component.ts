@@ -17,20 +17,18 @@ import { SingleCardComponent } from '../single-card/single-card.component';
 
 export class ListComponent implements OnInit{
 
-  constructor(private pokeSerice: PokeService,
-              private route: ActivatedRoute,
-              private router: Router
-              ){
-    
-}
-
-
- 
   pokemonPageSub!: Subscription;
   pokemonPage?: pokemodelPage;
   unsubscribe$ = new Subject<void>(); 
   //pokeImages: pokeimages | undefined;
   pagination!: {nextLink?: string, prevLink?: string, currentPage: number} 
+
+
+  constructor(private pokeSerice: PokeService,
+              private route: ActivatedRoute,
+              private router: Router
+              ){}
+
 
   ngOnInit(): void {
     let page = Number(this.route.snapshot.queryParamMap.get("page") ?? "1");

@@ -22,21 +22,16 @@ export class MovesComponent {
 
   index: number=1;
   lastpage: boolean=false;
-
+  pokemonDeatailsSub!: Subscription;
+  pokedeets: Pokemon | undefined;
+  //pokeMoves: moves | undefined;
+  pokemonImages: pokeimages | undefined;
+  unsubscribe$ = new Subject<void>();
 
   constructor(
     private pokeService: PokeService,
     private route: ActivatedRoute,
-    private router: Router){
-
-    }
-
-
-    pokemonDeatailsSub!: Subscription;
-    pokedeets: Pokemon | undefined;
-    //pokeMoves: moves | undefined;
-    pokemonImages: pokeimages | undefined;
-    unsubscribe$ = new Subject<void>();
+    private router: Router){}
 
 
     ngOnInit(): void{
@@ -46,41 +41,23 @@ export class MovesComponent {
       console.log(this.moves)
     }
 
-
-  
-    
-  loadNext(): void{ 
-    this.index++
-    if (this.index + 1 == this.moves.length){
-      console.log(this.index)
-
-      this.lastpage = true
+    loadNext(): void{ 
+      this.index++
+      if (this.index + 1 == this.moves.length){
+        console.log(this.index)
+        this.lastpage = true
+      }
+      this.move = this.moves[this.index]
     }
-    this.move = this.moves[this.index]
-    
 
+    loadPrev(){
+      this.index--
+      this.lastpage = false  
+    }
 
-  }
-
-  loadPrev(){
-    this.index--
-    this.lastpage = false
-    
-  }
-
-  
-  ngOnDestroy(): void {
+    ngOnDestroy(): void {
       this.unsubscribe$.next();
       this.unsubscribe$.complete();
-  
-  }
-
-     
-
-
-
-
-
-
+    }
 
 }

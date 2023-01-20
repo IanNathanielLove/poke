@@ -1,6 +1,6 @@
 
 <img class="header_image" src="https://pngimg.com/uploads/pokemon_logo/pokemon_logo_PNG3.png">
-<button class="pulse" routerLink="app-dropdown"> Search</button>
+<button class="pulse" routerLink="/dropdown"> Search</button>
 <div class="pagination">
 <app-pagination [currentPage]="pokemonPage?.currentPage || 1" (prevClicked)="loadPrev()" (nextClicked)="loadNext()"></app-pagination>
 </div>
